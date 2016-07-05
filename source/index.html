@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Demo App</title>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
+    </head>
+    <body ng-app="app">
+
+        <md-toolbar layout="row">
+            <flex><span class="md-toolbar-tools">Demo App</span></flex>
+        </md-toolbar>
+
+        <md-content class="md-padding">
+            <div ui-view></div>
+        </md-content>
+
+
+        <!-- Angular Material Dependencies -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+
+        <script>
+            ;(function (angular) {
+                'use strict';
+
+                var app = angular.module('app', ['ngMaterial', 'ui.router']);
+
+
+                app.config(function ($stateProvider, $urlRouterProvider) {
+                    $urlRouterProvider.otherwise("/screen-a");
+
+
+                    $stateProvider
+                        .state('screenA', {
+                            url: '/screen-a',
+                            templateUrl: 'screen-a.template.html'
+                        })
+                        .state('screenA.screenB', {
+                            url: '/screen-b',
+                            templateUrl: 'screen-b.template.html'                        })
+                        .state('screenA.screenB.screenC', {
+                            url: '/screen-c',
+                            templateUrl: 'screen-c.template.html'
+                        })
+                        .state('screenA.screenB.screenD', {
+                            url: '/screen-d',
+                            templateUrl: 'screen-d.template.html'
+                        })
+                })
+            })(angular);
+        </script>
+    </body>
+
+</html>
